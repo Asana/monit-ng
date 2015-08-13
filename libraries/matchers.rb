@@ -10,4 +10,12 @@ if defined?(ChefSpec)
   def remove_monit_check(check)
     ChefSpec::Matchers::ResourceMatcher.new(:monit_check, :remove, check)
   end
+
+  def create_monit_disk(check)
+    ChefSpec::Matchers::ResourceMatcher.new(:monit_disk, :create, check)
+  end
+
+  def remove_monit_disk(check)
+    ChefSpec::Matchers::ResourceMatcher.new(:monit_disk, :remove, check)
+  end
 end
