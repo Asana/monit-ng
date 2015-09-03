@@ -41,6 +41,7 @@ class Chef
           end
         end
         t.run_action exec_action
+        puts "UPDATED? #{t.updated_by_last_action?}"
         t.updated_by_last_action?
       end
       # rubocop: enable MethodLength
