@@ -7,7 +7,7 @@ ruby_block 'conditional-monit-reload' do
   block do
     # Cherry-pick monit_check resources from the run_context
     checks = run_context.resource_collection.select do |r|
-      r.is_a?(Chef::Resource::MonitCheck)
+      r.is_a?(Chef::Resource::MonitCheck) || r.is_a?(Chef::Resource::MonitDisk)
     end
 
     # Reload monit if any monit_check resources changed
