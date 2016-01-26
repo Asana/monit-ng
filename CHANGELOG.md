@@ -1,3 +1,16 @@
+# 2.2.0 / 2015-10-21
+
+* add start/stop timeouts
+
+# 2.1.0 / 2015-09-01
+
+* run syntax check before starting monit via upstart (thanks @helgi!)
+* have upstart run post-start script to wait for monit to become available (thanks @helgi!)
+
+# 2.0.3 / 2015-08-25
+
+* skip package autostart on install (thanks @helgi!)
+
 # 2.0.2 / 2015-07-14
 
 * add attribute to skip service actions
