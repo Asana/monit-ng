@@ -9,7 +9,13 @@ case node['monit']['install_method']
 when 'repo'
   # Monit is not in the default repositories
   include_recipe 'yum-epel' if platform_family?('rhel') && !platform?('amazon')
-  include_recipe 'ubuntu' if platform?('ubuntu')
+  if platform?('ubuntu')
+    dpkg_autostart 'monit' do
+      allow false
+    end
+
+    include_recipe 'ubuntu'
+  end
 
   package 'monit'
 when 'source'
@@ -86,9 +92,10 @@ when 'source'
       mode '0755'
     end
     variables(
-      :platform_family => node['platform_family'],
-      :binary          => monit_bin,
-      :conf_file       => node['monit']['conf_file'],
+      platform_family: node['platform_family'],
+      binary: monit_bin,
+      conf_file: node['monit']['conf_file'],
+      start_delay: node['monit']['start_delay']
     )
   end
 else
