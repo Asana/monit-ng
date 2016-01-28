@@ -34,6 +34,7 @@ class Chef::Resource
     attribute :tests, kind_of: Array, default: []
     attribute :every, kind_of: String
     attribute :alert, kind_of: String
+    attribute :confname, kind_of: String
 
     def check_type(arg = nil)
       set_or_return(
@@ -113,7 +114,8 @@ class Chef::Resource
         stop: stop, stop_as: stop_as, stop_as_group: stop_as_group,
         start_timeout: start_timeout, stop_timeout: stop_timeout,
         every: every, tests: tests, alert: alert, but_not_on: but_not_on,
-        alert_events: alert_events
+        alert_events: alert_events,
+        confname: confname
       }
     end
     # rubocop: enable AbcSize
@@ -165,7 +167,8 @@ class Chef::Provider
     private
 
     def tpl_path(resource)
-      ::File.join(node['monit']['conf_dir'], "#{resource.name}.conf")
+      name = resource.confname ? resource.confname : "#{resource.name}.conf"
+      ::File.join(node['monit']['conf_dir'], name)
     end
   end
 end
