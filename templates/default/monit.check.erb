@@ -10,7 +10,7 @@ check <%= @check_type %> <%= @name %>
   alert <%= @alert %> <% if @but_not_on %>but not on<% else %>on<% end %> { <%= @alert_events.join(', ') %> }
 <% end %>
 <% if @noalert %>
-  noalert <%= noalert %>
+  noalert <%= @noalert %>
 <% end %>
 <% if @group %>
   group <%= @group %>
