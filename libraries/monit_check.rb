@@ -34,7 +34,7 @@ class Chef::Resource
     attribute :tests, kind_of: Array, default: []
     attribute :every, kind_of: String
     attribute :alert, kind_of: String
-    attribute :noalert, king_of: String
+    attribute :noalert, kind_of: String
 
     def check_type(arg = nil)
       set_or_return(
