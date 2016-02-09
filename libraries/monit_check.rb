@@ -35,6 +35,7 @@ class Chef::Resource
     attribute :every, kind_of: String
     attribute :alert, kind_of: String
     attribute :confname, kind_of: String
+    attribute :noalert, kind_of: String
 
     def check_type(arg = nil)
       set_or_return(
@@ -115,7 +116,8 @@ class Chef::Resource
         start_timeout: start_timeout, stop_timeout: stop_timeout,
         every: every, tests: tests, alert: alert, but_not_on: but_not_on,
         alert_events: alert_events,
-        confname: confname
+        confname: confname,
+        noalert: noalert
       }
     end
     # rubocop: enable AbcSize
